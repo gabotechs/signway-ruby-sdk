@@ -50,7 +50,7 @@ jobs:
           git config user.email github-actions@github.com
           bundle config set frozen false
           bundle exec bump set $version
-          git add Gemfile.lock lib/signway_sdk/version.rb
+          git add .
           git commit -m "tag: v$version"
           git tag "v$version"
           git push

@@ -8,3 +8,4 @@
 /tmp/
 .idea
 signway_sdk-*.gem
+/vendor
