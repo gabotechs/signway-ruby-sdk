@@ -1,0 +1,26 @@
+name: Test/Lint/Release
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit-test-lint:
+    if: ${{ !startsWith(github.event.head_commit.message, 'tag') }}
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.6.10
+        bundler-cache: true
+    - run: docker run -p 3000:3000 -d --name signway --rm gabotechs/signway my-id my-secret
+    - run: bundle exec rake
+    - run: docker kill signway
