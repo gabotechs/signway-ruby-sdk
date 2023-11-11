@@ -68,5 +68,5 @@ jobs:
           chmod 0600 $HOME/.gem/credentials
         env:
           RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
-      - run: gem build signway_sdk.gemspec
-      - run: gem push signway_sdk-${{ steps.tag.outputs.version }}.gem -V
+      - run: gem build *.gemspec
+      - run: gem push *.gem -V
