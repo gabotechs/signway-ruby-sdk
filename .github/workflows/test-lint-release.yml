@@ -63,4 +63,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
       - run: gem build signway_sdk.gemspec
-      - run: gem push signway_sdk-${{ steps.tag.outputs.version }}.gem -k ${{ secrets.RUBYGEMS_API_KEY }}
+      - run: |
+          echo "---\n:rubygems_api_key: ${{ secrets.RUBYGEMS_API_KEY }}\n" >> ~/.gem/credentials
+          gem push signway_sdk-${{ steps.tag.outputs.version }}.gem
