@@ -64,9 +64,9 @@ jobs:
 
       - run: |
           echo "creating credentials file in $HOME/.gem/credentials"
-          echo "---\n:rubygems_api_key: ${RUBYGEMS_API_KEY}\n" > $HOME/.gem/credentials
+          echo "---\n:publish: ${RUBYGEMS_API_KEY}\n" > $HOME/.gem/credentials
           chmod 0600 $HOME/.gem/credentials
         env:
           RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
       - run: gem build *.gemspec
-      - run: gem push *.gem -V
+      - run: gem push *.gem -k publish -V
