@@ -42,8 +42,6 @@ jobs:
           ruby-version: 2.6.10
           bundler-cache: true
 
-      - run: bundle install
-
       - name: Tag
         id: tag
         run: |
@@ -64,4 +62,4 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
       - run: gem build signway_sdk.gemspec
-      - run: gem push $(ls signway_sdk-*.gem) -k ${{ secrets.RUBYGEMS_API_KEY }}
+      - run: gem push signway_sdk-${{ steps.tag.outputs.version }}.gem -k ${{ secrets.RUBYGEMS_API_KEY }}
