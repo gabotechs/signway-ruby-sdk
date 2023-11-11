@@ -11,15 +11,15 @@ gem install signway_sdk
 
 # Usage
 
-```shell
-from signway_sdk import sign_url
+```rb
+require 'signway_sdk'
 
-sign_url(
-    id="my-id",
-    secret="my-secret",
-    host="https://api.signway.io",
-    proxy_url="https://api.openai.com/v1/chat/completions",
-    expiry=10,
-    method="POST"
+puts SignwaySdk.sign_url(
+  id: ENV.fetch('SW_ID'),
+  secret: ENV.fetch('SW_SECRET'),
+  host: 'https://api.signway.io',
+  proxy_url: 'https://api.openai.com/v1/completions',
+  expiry: 10,
+  method: "POST",
 )
 ```
