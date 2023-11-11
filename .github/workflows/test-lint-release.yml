@@ -50,7 +50,7 @@ jobs:
           version=$(.github/semver.sh)
           git config user.name github-actions
           git config user.email github-actions@github.com
-          bump set $version
+          bundle exec bump set $version
           git add .
           git commit -m "tag: v$version"
           git tag "v$version"
