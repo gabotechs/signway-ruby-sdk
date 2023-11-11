@@ -12,3 +12,5 @@ gem "minitest", "~> 5.0"
 gem "rubocop", "~> 1.21"
 
 gem "rest-client", "~> 2.1"
+
+gem "bump", "~> 0.5.3"
