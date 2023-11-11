@@ -65,4 +65,5 @@ jobs:
       - run: gem build signway_sdk.gemspec
       - run: |
           echo "---\n:rubygems_api_key: ${{ secrets.RUBYGEMS_API_KEY }}\n" >> ~/.gem/credentials
+          chmod 0600 ~/.gem/credentials
           gem push signway_sdk-${{ steps.tag.outputs.version }}.gem
