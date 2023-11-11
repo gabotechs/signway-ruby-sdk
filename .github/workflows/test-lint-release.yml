@@ -63,3 +63,5 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
 
+      - run: gem build signway_sdk.gemspec
+      - run: gem push $(ls signway_sdk-*.gem) -k ${{ secrets.RUBYGEMS_API_KEY }}
