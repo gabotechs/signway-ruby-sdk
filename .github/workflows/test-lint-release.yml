@@ -17,20 +17,15 @@ jobs:
   unit-test-lint:
     if: ${{ !startsWith(github.event.head_commit.message, 'tag') }}
     runs-on: ubuntu-latest
-    services:
-      signway:
-        image: gabotechs/signway
-        ports:
-          - 3000:3000
-        options: my-id my-secret
-
     steps:
     - uses: actions/checkout@v4
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.6.10
         bundler-cache: true
+    - run: docker run -p 3000:3000 -d --name signway --rm gabotechs/signway my-id my-secret
     - run: bundle exec rake
+    - run: docker kill signway
 
   release:
     if: github.ref == 'refs/heads/main'
