@@ -63,9 +63,10 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
       - run: |
+          echo "creating credentials file in $HOME/.gem/credentials"
           echo "---\n:rubygems_api_key: ${RUBYGEMS_API_KEY}\n" > $HOME/.gem/credentials
           chmod 0600 $HOME/.gem/credentials
-          gem build signway_sdk.gemspec
-          gem push signway_sdk-${{ steps.tag.outputs.version }}.gem -k rubygems -V
         env:
           RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+      - run: gem build signway_sdk.gemspec
+      - run: gem push signway_sdk-${{ steps.tag.outputs.version }}.gem -V
