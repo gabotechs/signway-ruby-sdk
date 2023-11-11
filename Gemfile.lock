@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    signway_sdk (0.1.8)
+    signway_sdk (0.1.9)
 
 GEM
   remote: https://rubygems.org/
