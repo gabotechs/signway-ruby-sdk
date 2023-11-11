@@ -1,0 +1,33 @@
+module SignwaySdk
+  module SigningFunctions
+    ALGORITHM: String
+    LONG_DATETIME: String
+    SHORT_DATETIME: String
+    X_ALGORITHM: String
+    X_CREDENTIAL: String
+    X_DATE: String
+    X_EXPIRES: String
+    X_SIGNED_HEADERS: String
+    X_SIGNED_BODY: String
+    X_PROXY: String
+    X_SIGNATURE: String
+
+    def self.canonical_uri_string: (String) -> String
+
+    def self.canonical_query_string: (String) -> String
+
+    def self.canonical_header_string: -> String
+
+    def self.authorization_query_params_no_sig: -> String
+
+    def self.canonical_request: -> String
+
+    def self.scope_string: -> String
+
+    def self.signed_header_string: -> String
+
+    def self.signing_key: -> String
+
+    def self.string_to_sign: -> String
+  end
+end

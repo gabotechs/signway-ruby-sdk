@@ -1,0 +1,5 @@
+module SignwaySdk
+  VERSION: String
+  # See the writing guide of rbs: https://github.com/ruby/rbs#guides
+  def sign_url: -> String
+end
