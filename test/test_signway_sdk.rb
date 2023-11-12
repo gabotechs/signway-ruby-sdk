@@ -50,11 +50,11 @@ class TestSignwaySdk < Minitest::Test
       host: HOST,
       expiry: 10,
       method: "GET",
-      headers: { 'X-Foo': "foo" },
+      headers: { "X-Foo": "foo" },
       proxy_url: "https://postman-echo.com/get"
     )
 
-    response = RestClient.get(url, { 'X-Foo': "foo" })
+    response = RestClient.get(url, { "X-Foo": "foo" })
     json_response = JSON.parse(response.body)
 
     assert_equal "foo", json_response["headers"]["x-foo"]
@@ -67,12 +67,12 @@ class TestSignwaySdk < Minitest::Test
       host: HOST,
       expiry: 10,
       method: "POST",
-      headers: { 'X-Foo': "foo" },
+      headers: { "X-Foo": "foo" },
       body: '{"foo": "bar"}',
       proxy_url: "https://postman-echo.com/post"
     )
 
-    response = RestClient.post(url, '{"foo": "bar"}', { 'X-Foo': "foo", 'Content-Type': "application/json" })
+    response = RestClient.post(url, '{"foo": "bar"}', { "X-Foo": "foo", "Content-Type": "application/json" })
     json_response = JSON.parse(response.body)
 
     assert_equal "bar", json_response["json"]["foo"]
@@ -102,7 +102,7 @@ class TestSignwaySdk < Minitest::Test
       host: HOST,
       expiry: 10,
       method: "GET",
-      headers: { 'X-Foo': "foo" },
+      headers: { "X-Foo": "foo" },
       proxy_url: "https://postman-echo.com/get"
     )
 
@@ -118,12 +118,12 @@ class TestSignwaySdk < Minitest::Test
       host: HOST,
       expiry: 10,
       method: "GET",
-      headers: { 'X-Foo': "foo" },
+      headers: { "X-Foo": "foo" },
       proxy_url: "https://postman-echo.com/get"
     )
 
     assert_raises(RestClient::ExceptionWithResponse) do
-      RestClient.get(url, { ':X-Foo': "bar" })
+      RestClient.get(url, { "X-Foo": "bar" })
     end
   end
 

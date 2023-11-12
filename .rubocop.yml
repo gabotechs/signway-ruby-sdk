@@ -1,5 +1,6 @@
 AllCops:
   TargetRubyVersion: 2.6
+  NewCops: enable
 
 Style/StringLiterals:
   Enabled: true
@@ -25,4 +26,7 @@ Metrics/ParameterLists:
   Max: 10
 
 Metrics/AbcSize:
+  Enabled: false
+
+Gemspec/RequireMFA:
   Enabled: false
